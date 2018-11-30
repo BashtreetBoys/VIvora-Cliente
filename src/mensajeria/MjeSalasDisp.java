@@ -14,6 +14,10 @@ public class MjeSalasDisp {
 		super();
 		this.nombreSala = nombreSala;
 		this.nroPuertoSala = nroPuertoSala;
+	}
+	@Override
+	public String toString() {
+		return "Sala: " + this.nombreSala +" (puerto " +this.nroPuertoSala +")";
 	}    
 	
 
