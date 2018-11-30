@@ -14,6 +14,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import daos.Usuario;
+import mensajeria.MensajeUsuario;
 
 public class ConexionHibernate {
 	ObjectInputStream entrada;
@@ -118,18 +119,23 @@ public class ConexionHibernate {
 	 */
 	public boolean registrarUsuario(String user, String pass) {
 		//Acá tengo que enviarle los mensajes al server
-		Usuario nuevo = new Usuario();
-		nuevo.setUsername(user);
-		nuevo.setPassword(pass);
-		Transaction tx=session.beginTransaction();
+		boolean resultado = false;
+		MensajeUsuario mu = new MensajeUsuario(user, pass, true);
 		try {
-			session.save(nuevo);
-			tx.commit();
-		} catch (Exception e) {
-			tx.rollback();
-			return false;
+			salida.writeObject(mu);
+			resultado = entrada.readBoolean();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		return true;
+		return resultado;
+//		Transaction tx=session.beginTransaction();
+//		try {
+//			session.save(nuevo);
+//			tx.commit();
+//		} catch (Exception e) {
+//			tx.rollback();
+//			return false;
+//		}
 	}
 
 }

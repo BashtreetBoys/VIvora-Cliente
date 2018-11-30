@@ -105,7 +105,7 @@ public class RegistrarUsuario extends JFrame {
 		
 		//Fin boton loguearse
 	
-		ConexionHibernate conexion = new ConexionHibernate();
+		ConexionHibernate conexion = new ConexionHibernate(serverSocket, bufferIn, bufferOut);
 		
 		ActionListener listenerLoguearse = new ActionListener() {
 			
@@ -128,14 +128,14 @@ public class RegistrarUsuario extends JFrame {
 				if(!(pass.equals(confPass))){
 					JOptionPane.showMessageDialog(source, "Las contraseñas no coinciden");
 				}else{
-					//Acá tengo que mandarle la petición al server.
+					//ConexionHibernate conexion = new ConexionHibernate(serverSocket,bufferIn, bufferOut);
 					MensajeUsuario mu = new MensajeUsuario(user, pass, true);
 					try {
 						bufferOut.writeObject(mu);
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
-					//ConexionHibernate conexion = new ConexionHibernate(serverSocket,bufferIn, bufferOut);
+					
 					boolean band = conexion.registrarUsuario(user, pass);
 					if(band){
 						JOptionPane.showMessageDialog(source, "Se ha registrado su usuario!");
