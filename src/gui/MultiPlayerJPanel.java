@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -15,6 +16,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import mensajeria.MjeServerPrincipal;
 
 public class MultiPlayerJPanel extends JPanel {
 	
@@ -70,6 +73,19 @@ public class MultiPlayerJPanel extends JPanel {
 	private void lanzarCreadorSala() {
 		System.out.println("Falta implementar");
 		
+	}
+	private void crearSala(String nombreSala) {
+		MjeServerPrincipal paraEnviar = new MjeServerPrincipal();
+		paraEnviar.quieroConectarmeASala =false;
+		paraEnviar.quieroDesconectarme = false;
+		paraEnviar.quieroSalas = false;
+		paraEnviar.quieroCrearSalas = true;
+		paraEnviar.nombreSala = nombreSala;
+		try {
+			salida.writeObject(paraEnviar);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void lanzarBuscadorSalas() {
