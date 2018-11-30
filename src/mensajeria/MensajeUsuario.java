@@ -1,6 +1,8 @@
 package mensajeria;
 
-public class MensajeUsuario {
+import java.io.Serializable;
+
+public class MensajeUsuario implements Serializable {
 
 	public String user;
 	public String pass;

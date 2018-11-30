@@ -1,5 +1,7 @@
 package mensajeria;
 
+import java.io.Serializable;
+
 import gameObject.Arena;
 
 /*
@@ -8,7 +10,7 @@ import gameObject.Arena;
  * Si no pintamos nuestra arena y esperamos nuevas teclas.
  * 
  */
-public class MjeArenaNueva {
+public class MjeArenaNueva implements Serializable{
 
 	public Arena arenaNueva;
 	public boolean teMoriste;

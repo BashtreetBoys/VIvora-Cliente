@@ -127,15 +127,9 @@ public class RegistrarUsuario extends JFrame {
 				String confPass = new String(confirmPasswdText.getPassword());
 				if(!(pass.equals(confPass))){
 					JOptionPane.showMessageDialog(source, "Las contraseñas no coinciden");
-				}else{
-					//ConexionHibernate conexion = new ConexionHibernate(serverSocket,bufferIn, bufferOut);
+				}
+				else{
 					MensajeUsuario mu = new MensajeUsuario(user, pass, true);
-					try {
-						bufferOut.writeObject(mu);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-					
 					boolean band = conexion.registrarUsuario(user, pass);
 					if(band){
 						JOptionPane.showMessageDialog(source, "Se ha registrado su usuario!");
