@@ -25,7 +25,7 @@ public class Arena {
 		this.viboras = new ArrayList<Vibora>();
 		this.obstaculos = new ArrayList<Obstaculo>();
 		this.lv = 1;
-		this.frutaActual = new Fruta("Normal", 0, 0, 1);
+		this.frutaActual = new Fruta(0, 0, 0, 1);
 		cont = 0;
 	}
 
@@ -98,6 +98,9 @@ public class Arena {
 			}
 		}
 
+		if(vibActual != null && vibActual.getEstado() == 4)
+			return band;
+		
 		// Veo si la cabeza de alguna vibora choca con la cabeza de otra vibora
 		int choco = 0, indice = 0;
 		for (int i = 0; i < this.viboras.size(); i++) {
@@ -133,7 +136,7 @@ public class Arena {
 		}
 
 		if (this.lv < 3 && vibActual != null) {
-			if (this.cantidadFrutas >= 2) {
+			if (this.cantidadFrutas > 21) {
 
 				setLv(++lv);
 				cambiarNivel();
@@ -143,8 +146,96 @@ public class Arena {
 	}
 
 	public void colisionarFruta(Vibora vibora) {
-		vibora.crecer();
-		vibora.sumarPuntos(10);
+		Normal n = new Normal();
+		
+		if(vibora.getEstado() != 0 && this.frutaActual.getIdpowerup() != 0) {
+			n.cambiarEstado(vibora);
+			//System.out.println("volvi a la normalidad");
+		}
+		
+		///si el estado de la vivora es invencible ignorar el colisionador de obtaculos y viboras
+		///chupa almas 
+		int b = 0;
+		
+		///////////////////////////////////////////////
+		
+		if(this.frutaActual.getIdpowerup() == 4) { ///POWER UP INVICIBLE
+			
+			Invisible i = new Invisible();
+			i.cambiarEstado(vibora);
+			vibora.sumarPuntos(10);	// Misma cantidad de puntos que fruta normal
+		}
+		else if(this.frutaActual.getIdpowerup()==0 && vibora.getEstado()==4) {
+			
+			n.cambiarEstado(vibora);
+			vibora.sumarPuntos(10);	// Misma cantidad de puntos que fruta normal
+		}
+		
+		///////////////////////////////////////////////
+		
+		if(this.frutaActual.getIdpowerup()==3) { ///POWER UP FLASH
+			
+			Flash f = new Flash();
+			f.cambiarEstado(vibora);
+			vibora.sumarPuntos(5);	// Misma cantidad de puntos que fruta normal
+		}
+		else if(this.frutaActual.getIdpowerup()==0 && vibora.getEstado()==3) {
+			
+			n.cambiarEstado(vibora);
+			vibora.sumarPuntos(5);	// Misma cantidad de puntos que fruta normal
+		}
+		
+		////////////////////////////////////////////////
+		
+		if(this.frutaActual.getIdpowerup()==1) { ///POWER UP DORADA
+			
+			Dorada d = new Dorada();
+			d.cambiarEstado(vibora);
+			vibora.sumarPuntos(20);	
+		}
+		else if(this.frutaActual.getIdpowerup()==0 && vibora.getEstado()==1) {
+			
+			vibora.crecer();
+			n.cambiarEstado(vibora);
+			b=1;
+			vibora.sumarPuntos(20);	
+		}
+		
+		//////////////////////////////////////////////////////////////
+		
+		if(this.frutaActual.getIdpowerup()==2) { ///POWER UP ENVENENADA
+			
+			Envenenada e = new Envenenada();
+			e.cambiarEstado(vibora);
+			b=1;
+			//System.out.println("reste 1");
+			vibora.sumarPuntos(-10);	
+		}
+		else if(this.frutaActual.getIdpowerup()==0 && vibora.getEstado()==2) {
+			
+			vibora.removerCuerpo();
+			n.cambiarEstado(vibora);
+			b=1;
+			//System.out.println("reste 1");
+			vibora.sumarPuntos(-10);
+		}
+		
+		//////////////////////////////////////////////////////////////
+		
+		if(b==0) {
+			vibora.crecer();
+			vibora.sumarPuntos(10);
+		}
+		
+		Random generador = new Random();
+		System.out.println("cantidad de frutas " + this.cantidadFrutas);
+		if((this.cantidadFrutas%5)==0 && this.cantidadFrutas!=0)
+			this.frutaActual.setIdpowerup(1+generador.nextInt(4));
+			//this.frutaActual.setIdpowerup(3);
+		else
+			this.frutaActual.setIdpowerup(0);
+		System.out.println("id fruta "+this.frutaActual.getIdpowerup());
+		//System.out.println("estado de la vibora "+vibora.getEstado());
 		this.agregarFruta(frutaActual);
 		this.cantidadFrutas++;
 	}
@@ -223,8 +314,11 @@ public class Arena {
 		// METO LAS SERPIENTES QUE DEBEN EMPEZAR EN ESTE NIVEL
 		ArrayList<Vibora> auxiliar = new ArrayList<Vibora>();
 
+		Normal n = new Normal();
+		
 		for (int i = 0; i < viboras.size(); i++) {
 			viboras.get(i).resetearCuerpo();
+			n.cambiarEstado(viboras.get(i));
 			if (viboras.get(i).isViva() == true)
 				auxiliar.add(viboras.get(i));
 		}
@@ -278,7 +372,7 @@ public class Arena {
 		}
 
 		// Agregar frutas
-		this.cantidadFrutas = 0;
+		this.cantidadFrutas = 1;
 		this.agregarFruta(frutaActual);
 	}
 

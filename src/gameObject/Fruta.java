@@ -6,9 +6,20 @@ public class Fruta {
 	private int posX;
 	private int posY;
 	private int numeroFruta;
+	private int idpowerup;
 	
-	public Fruta(String powerUp, int posX, int posY,int numeroFruta) {
-		this.powerUp = powerUp;
+	public Fruta(int idpowerup, int posX, int posY,int numeroFruta) {
+		if(idpowerup == 0)
+			this.powerUp = "normal";
+		if(idpowerup == 1)
+			this.powerUp = "dorada";
+		if(idpowerup == 2)
+			this.powerUp = "veneno";
+		if(idpowerup == 3)
+			this.powerUp = "flash";
+		if(idpowerup == 4)
+			this.powerUp = "tortuga";
+		this.idpowerup = idpowerup;
 		this.posX = posX;
 		this.posY = posY;
 		this.numeroFruta = numeroFruta;
@@ -48,6 +59,12 @@ public class Fruta {
 	public void setNumeroFruta(int numeroFruta) {
 		this.numeroFruta = numeroFruta;
 	}
-	
-	
+
+	public int getIdpowerup() {
+		return idpowerup;
+	}
+
+	public void setIdpowerup(int idpowerup) {
+		this.idpowerup = idpowerup;
+	}
 }
