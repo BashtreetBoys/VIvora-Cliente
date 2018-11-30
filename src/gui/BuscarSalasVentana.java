@@ -1,6 +1,9 @@
 package gui;
 
 import java.awt.Dimension;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -20,6 +23,10 @@ public class BuscarSalasVentana extends JFrame {
 	private JList<MjeSalasDisp> listaSalas;
 	private JList<String> listaSalasPrueba;
 	private JScrollPane panelScroll;
+	
+	Socket socketServerPrincipal;
+	ObjectInputStream entrada;
+	ObjectOutputStream salida;
 	
 	private JLabel salasLabel;
 	
