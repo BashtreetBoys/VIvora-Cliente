@@ -71,24 +71,18 @@ public class ConexionHibernate {
 
 	/**
 	 * 
-	 * @param usuario:
-	 *            le pasan el username que inserto en el login
-	 * @param pass
-	 *            le pasan la pass que inserto en el login
-	 * @return true si existe el usuario con esa pass y se puede loggear, false
-	 *         si no
+	 * @param usuario le pasan el username que inserto en el login
+	 * @param pass le pasan la pass que inserto en el login
+	 * @return true si existe el usuario con esa pass y se puede loguear, false si no
 	 * @throws ClassNotFoundException 
 	 */
 	public boolean verSiExiste(String usuario, String pass)  {
 		boolean resultado = false;
-		Usuario nue = new Usuario();
-		nue.setUsername(usuario);
-		nue.setPassword(pass);
+		MensajeUsuario mu = new MensajeUsuario(usuario, pass, false);
 		try {
 
-			salida.writeObject(nue);
+			salida.writeObject(mu);
 			resultado = (boolean) entrada.readObject();
-			
 		}
 		catch(IOException e) {
 			e.printStackTrace();
@@ -96,29 +90,15 @@ public class ConexionHibernate {
 			e.printStackTrace();
 		}
 		return resultado;
-		/*try {
-			Query q = session.createQuery(
-					"Select u from Usuario u Where u.username = '" + usuario + "' and u.password = '" + pass + "'");
-			nue = (Usuario) q.getSingleResult();
-		} catch (Exception e) {
-			System.out.println("No encontrado");
-			return false;
-		}
-		if (nue.getUsername().equals(usuario) && nue.getPassword().equals(pass)) {
-			return true;
-		}*/
 	}
 
 	/**
 	 * 
-	 * @param user
-	 *            le pasan el nombre de usuario a registrar
-	 * @param pass
-	 *            le pasan la pass a registrar
+	 * @param user le pasan el nombre de usuario a registrar
+	 * @param pass le pasan la pass a registrar
 	 * @return true si ingreso con exito, false si no
 	 */
 	public boolean registrarUsuario(String user, String pass) {
-		//Acá tengo que enviarle los mensajes al server
 		boolean resultado = false;
 		MensajeUsuario mu = new MensajeUsuario(user, pass, true);
 		try {
@@ -130,18 +110,9 @@ public class ConexionHibernate {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return resultado;
-//		Transaction tx=session.beginTransaction();
-//		try {
-//			session.save(nuevo);
-//			tx.commit();
-//		} catch (Exception e) {
-//			tx.rollback();
-//			return false;
-//		}
 	}
 
 }
