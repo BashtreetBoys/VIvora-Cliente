@@ -29,7 +29,7 @@ public class Login extends JFrame {
 	private JPanel panelContenedor;
 	private JPanel panelLogin;
 /*
- * En el constructor ahora le estoy paasando el socket y los stream, asi como esta aca que les quedo barbaro hagan las otras ventanas de multiplayer
+ * En el constructor ahora le estoy pasando el socket y los stream, asi como esta aca que les quedo barbaro hagan las otras ventanas de multiplayer
  * Las de singleplayer no hace falta.
  * 
  */

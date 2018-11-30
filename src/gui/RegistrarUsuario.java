@@ -12,6 +12,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import connection.ConexionHibernate;
+import mensajeria.MensajeUsuario;
 
 public class RegistrarUsuario extends JFrame {
 	
@@ -128,7 +129,13 @@ public class RegistrarUsuario extends JFrame {
 					JOptionPane.showMessageDialog(source, "Las contraseñas no coinciden");
 				}else{
 					//Acá tengo que mandarle la petición al server.
-					MensajeUsuario mu = new MensajeUsuario(new Usuario(user,pass), true);
+					MensajeUsuario mu = new MensajeUsuario(user, pass, true);
+					try {
+						bufferOut.writeObject(mu);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					//ConexionHibernate conexion = new ConexionHibernate(serverSocket,bufferIn, bufferOut);
 					boolean band = conexion.registrarUsuario(user, pass);
 					if(band){
 						JOptionPane.showMessageDialog(source, "Se ha registrado su usuario!");
