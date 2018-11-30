@@ -135,8 +135,8 @@ public class Arena {
 			}
 		}
 
-		if (this.lv < 3 && vibActual != null) {
-			if (this.cantidadFrutas > 21) {
+		if (this.lv < 4 && vibActual != null) {
+			if (this.cantidadFrutas > 5) {
 
 				setLv(++lv);
 				cambiarNivel();
@@ -350,10 +350,8 @@ public class Arena {
 			obstaculos.add(new Obstaculo(19, 0, 880, 19));
 			obstaculos.add(new Obstaculo(860, 19, 880, 640));
 			obstaculos.add(new Obstaculo(0, 640, 880, 660));
-			obstaculos.add(new Obstaculo(560, 180, 880, 199));
-			obstaculos.add(new Obstaculo(0, 380, 319, 399));
-			obstaculos.add(new Obstaculo(320, 0, 339, 259));
-			obstaculos.add(new Obstaculo(560, 400, 579, 660));
+			obstaculos.add(new Obstaculo(320, 160, 339, 499));
+			obstaculos.add(new Obstaculo(560, 160, 579, 499));
 			break;
 		case 4:
 			obstaculos.clear();
@@ -361,6 +359,10 @@ public class Arena {
 			obstaculos.add(new Obstaculo(19, 0, 880, 19));
 			obstaculos.add(new Obstaculo(860, 19, 880, 640));
 			obstaculos.add(new Obstaculo(0, 640, 880, 660));
+			obstaculos.add(new Obstaculo(560, 180, 880, 199));
+			obstaculos.add(new Obstaculo(0, 380, 319, 399));
+			obstaculos.add(new Obstaculo(320, 0, 339, 259));
+			obstaculos.add(new Obstaculo(560, 400, 579, 660));
 			break;
 		case 5:
 			obstaculos.clear();
