@@ -114,9 +114,10 @@ public class Login extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JButton source = (JButton) e.getSource();
+
 				String user = new String(userText.getText());
 				String pass = new String(passwordText.getPassword());
-				
+				if(user.length()>0 && pass.length()>0) {
 				ConexionHibernate conexion = new ConexionHibernate(socketServerPrincipal,entrada, salida);
 				if (conexion.verSiExiste(user, pass)) {
 					JOptionPane.showMessageDialog(Login.this, "Bienvenido/a " + user, "Loggeo exitoso",
@@ -125,6 +126,11 @@ public class Login extends JFrame {
 					clContenedora.show(panelContenedor, "Menu");
 				} else
 					JOptionPane.showMessageDialog(source, "No existe ese usuario con esa contraseña");
+			}
+				else {
+						JOptionPane.showMessageDialog(Login.this, "No deje campos vacios, se enoja la vibora", "Verificacion",JOptionPane.PLAIN_MESSAGE);
+
+				}
 			}
 		};
 
