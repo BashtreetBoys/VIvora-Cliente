@@ -6,6 +6,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ObjectInputStream;
+import java.net.Socket;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,6 +21,9 @@ public class MultiPlayerJPanel extends JPanel {
 	private JButton buscarSalasButton;
 	
 	public MultiPlayerJPanel() {
+		Socket socketServerPrincipal;
+		ObjectInputStream entrada;
+		ObjectOutputStream salida;
 		crearComponentes();
 		crearLayout();
 		
