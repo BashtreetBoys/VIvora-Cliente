@@ -3,6 +3,9 @@ package gui;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -34,13 +37,21 @@ public class CrearSalaVentana extends JFrame {
 	private String nombreSala = null;
 	private MultiPlayerJPanel padre;
 	
-	public CrearSalaVentana(MultiPlayerJPanel padre) {
+	private Socket socketAlServer;
+	private ObjectInputStream entrada;
+	private ObjectOutputStream salida;
+	
+	public CrearSalaVentana(MultiPlayerJPanel padre, Socket socketServerPrincipal,
+			ObjectInputStream entrada, ObjectOutputStream salida) {
 		super("Creador");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(330, 130);
 		setLocationRelativeTo(null);
 		
 		this.padre = padre;
+		this.socketAlServer = socketServerPrincipal;
+		this.entrada = entrada;
+		this.salida = salida;
 		
 		crearComponentes();
 		crearLayout();
@@ -116,7 +127,7 @@ public class CrearSalaVentana extends JFrame {
 		return nombreSala;
 	}
 	
-	public static void main(String args[]) {
+	/*public static void main(String args[]) {
 		new CrearSalaVentana(null).setVisible(true);
-	}
+	}*/
 }

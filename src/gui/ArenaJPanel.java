@@ -24,13 +24,14 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 	private ArenaVentana padre;	// seguro que esto es una re negrada
 
 	private Arena arena;
-	private Timer t = new Timer(80, this);
+	private Timer t = new Timer(60, this);
 	private Vibora vibora;
 	private Fruta fruta;
 	private Cuerpo cuerpo;
 	int keyCodeRegistrado;
 	private ArrayList<Obstaculo> obs;
 	ArrayList<Color> listaColores = new ArrayList<Color>();
+	private boolean band = true;
 
 	public ArenaJPanel(ArenaVentana padre) {
 		super();
@@ -104,26 +105,36 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		Vibora[] v = new Vibora[arena.getViboras().size()];
+		for(int i = 0; i < arena.getViboras().size(); i++)
+			v[i] = arena.getViboras().get(i);
 		
-		for(Vibora v : arena.getViboras()) {
-			if (!v.isViva()) {
-				t.stop();
-				System.out.println("Se te murio la vibora");
-			}
+		for(int i = 0; i < v.length; i++) {
+//			if (!v[i].isViva() && !v[i].isIA()) {
+//				t.stop();
+//				System.out.println("Se te murio la vibora");
+//			}
+			
+			if (band)
+				this.keyCodeRegistrado = v[i].getDireccion();
 		
-			v.moverVibora(keyCodeRegistrado);
+			if(v[i].isIA() && v[i].getTipoIA() <= 1)
+				arena.inteligenciaArtificial(v[i]);
+			else if(v[i].isIA() && v[i].getTipoIA() == 2)
+				arena.inteligenciaArtificialCuadrado(v[i]);
+			else
+				v[i].moverVibora(keyCodeRegistrado);
 			// t.stop();  // lo dejo porque capaz con el synchronized no se soluciona el problema de los threads
-			arena.verColision(v.getCabeza().getPosX(), v.getCabeza().getPosY(),v);
-			padre.actualizarPuntosJugador(v, v.getPuntosPartidaActual());
+			arena.verColision(v[i].getCabeza().getPosX(), v[i].getCabeza().getPosY(), v[i]);
+			padre.actualizarPuntosJugador(v[i], v[i].getPuntosPartidaActual());
 			// t.start(); // lo dejo porque capaz con el synchronized no se soluciona el problema de los threads
 		
 			repaint();
 		}
+		band = false;
 	}
 
 	public void moverVibora(int keyCode) {
-		if (keyCode != aKeyCode(vibora.getDireccion()) && keyCode != aKeyCodeOpuesto(vibora.getDireccion()))
-			System.out.println(keyCode);
 			this.keyCodeRegistrado = keyCode;
 	}
 

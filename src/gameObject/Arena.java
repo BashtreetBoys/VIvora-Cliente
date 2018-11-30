@@ -55,8 +55,8 @@ public class Arena {
 		 */
 
 		while (verColision(x, y, null)) {
-			x = new Random().nextInt(fil) * Arena.TAM_GRAFICOS;
-			y = new Random().nextInt(col) * Arena.TAM_GRAFICOS;
+			x = new Random().nextInt(col) * Arena.TAM_GRAFICOS;
+			y = new Random().nextInt(fil) * Arena.TAM_GRAFICOS;
 		}
 		frutaNueva.setPosX(x);
 		frutaNueva.setPosY(y);
@@ -143,7 +143,6 @@ public class Arena {
 	}
 
 	public void colisionarFruta(Vibora vibora) {
-
 		vibora.crecer();
 		vibora.sumarPuntos(10);
 		this.agregarFruta(frutaActual);
@@ -193,28 +192,28 @@ public class Arena {
 		viboras.get(n).setViva(true);
 		switch (n) {
 		case 0:
-			viboras.get(n).setVibora(4, 4, 2);
+			viboras.get(n).setVibora(4, 4, 3);
 			break;
 		case 1:
-			viboras.get(n).setVibora(10, 10, 1);
+			viboras.get(n).setVibora(20, 3, 2);
 			break;
 		case 2:
-			viboras.get(n).setVibora(20, 20, 2);
+			viboras.get(n).setVibora(40, 2, 2);
 			break;
 		case 3:
-			viboras.get(n).setVibora(95, 50, 3);
+			viboras.get(n).setVibora(15, 5, 2);
 			break;
 		case 4:
-			viboras.get(n).setVibora(95, 5, 4);
+			viboras.get(n).setVibora(20, 10, 2);
 			break;
 		case 5:
-			viboras.get(n).setVibora(50, 5, 1);
+			viboras.get(n).setVibora(15, 15, 2);
 			break;
 		case 6:
-			viboras.get(n).setVibora(5, 5, 2);
+			viboras.get(n).setVibora(10, 15, 2);
 			break;
 		case 7:
-			viboras.get(n).setVibora(5, 50, 2);
+			viboras.get(n).setVibora(9, 9, 2);
 			break;
 		}
 	}
@@ -323,61 +322,54 @@ public class Arena {
 		return obstaculos;
 	}
 
-	public void inteligenciaArtificial(Vibora vibora2, Object obj2) {
+	public void inteligenciaArtificial(Vibora v) {
 
-		if (cont <= 5)
-			vibora2.moverVibora(KeyEvent.VK_RIGHT);
-		else if (cont >= 6 && cont <= 10)
-			vibora2.moverVibora(KeyEvent.VK_DOWN);
-		else if (cont >= 11 && cont <= 15)
-			vibora2.moverVibora(KeyEvent.VK_LEFT);
-		else if (cont >= 16 && cont <= 20)
-			vibora2.moverVibora(KeyEvent.VK_UP);
+		if (v.getCabeza().getPosX() < frutaActual.getPosX()) {
+			if (v.getCabeza().getPosY() > frutaActual.getPosY())
+				v.setDireccion(1);
+			else if (v.getCabeza().getPosY() < frutaActual.getPosY())
+				v.setDireccion(3);
+			else if (v.getDireccion() == 4) {
+				v.setDireccion(1);
+			} else {
+				v.setDireccion(2);
+			}
+		} else if (v.getCabeza().getPosX() > frutaActual.getPosX()) {
+			if (v.getCabeza().getPosY() > frutaActual.getPosY())
+				v.setDireccion(1);
+			else if (v.getCabeza().getPosY() < frutaActual.getPosY())
+				v.setDireccion(3);
+			else if (v.getDireccion() == 2) {
+				v.setDireccion(3);
+			} else {
+				v.setDireccion(4);
+			}
+		}
+
+		// if((verColision(v.getCabeza().getPosX()+TAM_GRAFICOS,
+		// v.getCabeza().getPosY()+TAM_GRAFICOS)) != null && v.getDireccion() !=
+		// 1)
+		// v.setDireccion(1);
+
+		v.moverVibora(v.getDireccion());
+//		verColision(v.getCabeza().getPosX(), v.getCabeza().getPosY(),v);
+	}
+
+	public void inteligenciaArtificialCuadrado(Vibora v) {
+
+		if (cont <= 2)
+			v.setDireccion(2);
+		else if (cont >= 3 && cont <= 5)
+			v.setDireccion(3);
+		else if (cont > 5 && cont <= 8)
+			v.setDireccion(4);
+		else if (cont > 8 && cont <= 12)
+			v.setDireccion(1);
 		else {
 			cont = 0;
-			vibora2.moverVibora(KeyEvent.VK_RIGHT);
+			v.setDireccion(2);
 		}
 		cont++;
-
-		if (obj2 == getFrutaActual())
-			colisionarFruta(vibora2);
-		else if (obj2 != null && obj2.getClass() == vibora2.getClass()) {
-
-			colisionarConViboraOObstaculo(obj2);
-			colisionarConViboraOObstaculo(vibora2);
-		} else if (obj2 != null && obj2.getClass() == vibora2.getClass()) {
-
-			colisionarConViboraOObstaculo(vibora2);
-		} else if (obj2 != null)
-			colisionarConViboraOObstaculo(vibora2);
+		v.moverVibora(v.getDireccion());
 	}
-
-	public void inteligenciaArtificial2(Vibora vibora2, Object obj2) {
-
-		if (cont <= 15)
-			vibora2.moverVibora(KeyEvent.VK_RIGHT);
-		else if (cont >= 16 && cont <= 20)
-			vibora2.moverVibora(KeyEvent.VK_UP);
-		else if (cont >= 21 && cont <= 23)
-			vibora2.moverVibora(KeyEvent.VK_LEFT);
-		else if (cont >= 24 && cont <= 29)
-			vibora2.moverVibora(KeyEvent.VK_DOWN);
-		else {
-			cont = 0;
-			vibora2.moverVibora(KeyEvent.VK_RIGHT);
-		}
-
-		if (obj2 == getFrutaActual())
-			colisionarFruta(vibora2);
-		else if (obj2 != null && obj2.getClass() == vibora2.getClass()) {
-
-			colisionarConViboraOObstaculo(obj2);
-			colisionarConViboraOObstaculo(vibora2);
-		} else if (obj2 != null && obj2.getClass() == vibora2.getClass()) {
-
-			colisionarConViboraOObstaculo(vibora2);
-		} else if (obj2 != null)
-			colisionarConViboraOObstaculo(vibora2);
-	}
-
 }

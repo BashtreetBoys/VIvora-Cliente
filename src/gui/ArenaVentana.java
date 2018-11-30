@@ -46,15 +46,16 @@ public class ArenaVentana extends JFrame {
 		setContentPane(panelContenedor);
 
 		agregarJugador(new Jugador("Julian", "que se yah", new Vibora(0, 0)));
-		agregarJugador(new Jugador("Mati", "uesaaaaa", new Vibora(1,1)));
+		agregarIA(new Jugador("IA 1", "Papurri", new Vibora(0, 0)));
+		agregarIA(new Jugador("IA 2", "Mamurri", new Vibora(0, 0)));
+		//agregarIA(new Jugador("IA 3", "Hermanurri", new Vibora(0, 0)));
+		//agregarJugador(new Jugador("Mati", "uesaaaaa", new Vibora(1,1)));
 		//agregarJugador(new Jugador("Pablo", "ke ase", new Vibora(2, 2)));
 		//agregarJugador(new Jugador("Facu", "papu", new Vibora(3, 3)));
 		
 		
 		addKeyListener(new KeyAdapter() {
-			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println(e.getKeyCode());
 				panelArena.moverVibora(e.getKeyCode());
 			}
 		});
@@ -94,6 +95,15 @@ public class ArenaVentana extends JFrame {
 		panelPuntos.agregarJugador(nuevoJugador.getNombre(), listaColores.get(colorAAsignar));
 		panelArena.agregarVibora(nuevoJugador.getVivorita(), listaColores.get(colorAAsignar), listaColores.get(colorAAsignar - 1));
 		ArenaVentana.colorAAsignar += 2;
+	}
+	
+	public void agregarIA(Jugador nuevoIA){
+		listaJugadores.add(nuevoIA);
+		panelPuntos.agregarJugador(nuevoIA.getNombre(), listaColores.get(colorAAsignar));
+		nuevoIA.getVivorita().setIA(true);
+		nuevoIA.getVivorita().setTipoIA((new Random().nextInt(2)+1));
+		panelArena.agregarVibora(nuevoIA.getVivorita(), listaColores.get(colorAAsignar), listaColores.get(colorAAsignar - 1));
+		ArenaVentana.colorAAsignar += 2;	
 	}
 
 	private void crearListaColores() {

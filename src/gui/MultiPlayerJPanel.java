@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -39,11 +38,6 @@ public class MultiPlayerJPanel extends JPanel {
 		this.socketServerPrincipal = s;
 		this.entrada = entrada;
 		this.salida = salida;
-		add(Box.createRigidArea(new Dimension(0, 100)));
-		add(crearSalaButton);
-		add(Box.createRigidArea(new Dimension(0, 20)));
-		add(buscarSalasButton);
-		add(Box.createRigidArea(new Dimension(0, 20)));
 	}
 
 	private void crearComponentes() {
@@ -74,10 +68,16 @@ public class MultiPlayerJPanel extends JPanel {
 		setBackground(Color.BLACK);
 		setBorder(new EmptyBorder(0, 0, 0, 0));
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
+		add(Box.createRigidArea(new Dimension(0, 100)));
+		add(crearSalaButton);
+		add(Box.createRigidArea(new Dimension(0, 20)));
+		add(buscarSalasButton);
+		add(Box.createRigidArea(new Dimension(0, 20)));
 	}
 	
 	private void lanzarCreadorSala() {
-		new CrearSalaVentana(this).setVisible(true);
+		new CrearSalaVentana(this, this.socketServerPrincipal, this.entrada, this.salida).setVisible(true);
 	}
 	
 	public void crearSala(String nombreSala) {	// no me gusta cambiarlo de private a public pero es temporal

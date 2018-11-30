@@ -15,6 +15,9 @@ public class Vibora {
 	private Color colorCabeza,colorCuerpo;
 	private int puntosPartidaActual;
 	
+	private boolean isIA;
+	private int tipoIA;
+	
 
 	public Vibora(int xIni, int yIni) {
 		this.velocidad = 1;
@@ -23,6 +26,7 @@ public class Vibora {
 		this.ratioCrecimiento = 1;
 		this.viva = true;
 		this.puntosPartidaActual = 0;
+		this.isIA = false;
 	}
 
 	public void setVibora(int xIni, int yIni, int direccion) {
@@ -209,5 +213,26 @@ public class Vibora {
 	
 	public int getPuntosPartidaActual() {
 		return puntosPartidaActual;
+	}
+
+	public boolean isIA() {
+		return isIA;
+	}
+
+	public int getTipoIA() {
+		return tipoIA;
+	}
+
+	public void setTipoIA(int tipoIA) {
+		this.tipoIA = tipoIA;
+	}
+
+	public void setIA(boolean isIA) {
+		this.isIA = isIA;
+		
+	}
+
+	public void setDireccion(int dir) {
+		this.direccion = dir;	
 	}
 }

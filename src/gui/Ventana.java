@@ -24,7 +24,8 @@ public class Ventana extends JFrame {
 	private JPanel panelMenu;
 	private JPanel panelLogin;
 	
-	private JButton atrasButton;
+	private JButton atrasButtonSP;
+	private JButton atrasButtonMP;
 	private JButton loginButton;
 	private JButton singlePlayerButton;
 	private JButton multiPlayerButton;
@@ -77,7 +78,7 @@ public class Ventana extends JFrame {
 		
 		setContentPane(panelPrincipal);
 		
-		//cl.show(panelPrincipal, "Menu");
+		cl.show(panelPrincipal, "Menu");
 }
 	
 	private void crearLayout() {
@@ -104,8 +105,8 @@ public class Ventana extends JFrame {
 		panelMenu.add(Box.createRigidArea(new Dimension(0, 20)));
 		panelMenu.add(multiPlayerButton);
 		
-		singlePlayerPanel.add(atrasButton);
-		multiPlayerPanel.add(atrasButton);
+		singlePlayerPanel.add(atrasButtonSP);
+		multiPlayerPanel.add(atrasButtonMP);
 		
 		panelPrincipal.add(panelLogin, "Login");
 		panelPrincipal.add(panelMenu, "Menu");
@@ -127,10 +128,15 @@ public class Ventana extends JFrame {
 		tituloJuego2.setIcon(new ImageIcon("recursos\\Titulo.png"));
 		
 		Dimension maxSize = new Dimension(200, 50);
-		atrasButton = new JButton("Atras");
-		atrasButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		atrasButton.setMaximumSize(maxSize);
-		atrasButton.addActionListener(new BotonActionListener());
+		atrasButtonSP = new JButton("Atras");
+		atrasButtonSP.setAlignmentX(Component.CENTER_ALIGNMENT);
+		atrasButtonSP.setMaximumSize(maxSize);
+		atrasButtonSP.addActionListener(new BotonActionListener());
+		
+		atrasButtonMP = new JButton("Atras");
+		atrasButtonMP.setAlignmentX(Component.CENTER_ALIGNMENT);
+		atrasButtonMP.setMaximumSize(maxSize);
+		atrasButtonMP.addActionListener(new BotonActionListener());
 		
 		loginButton = new JButton("Ingresar");
 		loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -169,7 +175,7 @@ public class Ventana extends JFrame {
 				
 				if(boton == loginButton) {
 					try {
-						new Login(cl, panelPrincipal,socketServerPrincipal,salida,entrada).setVisible(true); //esto es lo que te decia, asi armen las ventanas que de esta manera le puedo pasar el socket y los stream
+						new Login(cl, panelPrincipal, socketServerPrincipal, salida, entrada).setVisible(true); //esto es lo que te decia, asi armen las ventanas que de esta manera le puedo pasar el socket y los stream
 					} catch (UnknownHostException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -181,7 +187,7 @@ public class Ventana extends JFrame {
 				else if(boton == singlePlayerButton)
 					Ventana.this.lanzarSinglePlayer(); 
 				else if(boton == multiPlayerButton)
-					Ventana.this.lanzarMultiPlayer();//asi no, fuchila, no le puedo pasar los sockets.
+					Ventana.this.lanzarMultiPlayer(); //asi no, fuchila, no le puedo pasar los sockets.
 				else
 					cl.show(panelPrincipal, "Menu");					
 			}
