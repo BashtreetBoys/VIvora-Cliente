@@ -2,9 +2,9 @@ package mensajeria;
 
 public class MensajeUsuario {
 
-	String user;
-	String pass;
-	private boolean quieroRegistrarme;	//Boolean que indica si el usuario quiere registrarse.
+	public String user;
+	public String pass;
+	public boolean quieroRegistrarme;	//Boolean que indica si el usuario quiere registrarse.
 	
 	public MensajeUsuario(String user, String pass, boolean registro) {
 		this.user = user;
