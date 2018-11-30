@@ -1,5 +1,7 @@
 package mensajeria;
 
+import java.io.Serializable;
+
 import gameObject.Vibora;
 
 /**
@@ -10,7 +12,7 @@ import gameObject.Vibora;
  * @author Julian
  *
  */
-public class MsjeXeYNuevo {
+public class MsjeXeYNuevo implements Serializable{
 
 	public Vibora miVibora;
 	public int posXNueva;

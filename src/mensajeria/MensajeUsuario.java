@@ -1,13 +1,16 @@
 package mensajeria;
-import daos.Usuario;
 
-public class MensajeUsuario {
+import java.io.Serializable;
 
-	private Usuario usuario;			//Info del usuario
-	private boolean quieroRegistrarme;	//Boolean que indica si el usuario quiere registrarse.
+public class MensajeUsuario implements Serializable {
+
+	public String user;
+	public String pass;
+	public boolean quieroRegistrarme;	//Boolean que indica si el usuario quiere registrarse.
 	
-	public MensajeUsuario(Usuario u, boolean registro) {
-		this.usuario = u;
+	public MensajeUsuario(String user, String pass, boolean registro) {
+		this.user = user;
+		this.pass = pass;
 		this.quieroRegistrarme = registro;
 	}
 }

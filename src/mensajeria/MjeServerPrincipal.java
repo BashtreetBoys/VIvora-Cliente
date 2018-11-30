@@ -1,5 +1,7 @@
 package mensajeria;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Julian
@@ -11,7 +13,7 @@ package mensajeria;
  * El quieroConectarmeASala lo deje por las dudas pero no lo vamos a usar
  */
         
-public class MjeServerPrincipal {
+public class MjeServerPrincipal implements Serializable{
 	public boolean quieroSalas;
 	public boolean quieroCrearSalas;
 	public boolean quieroConectarmeASala;//creo que este no hace falta porque para conectarse a una sala le tira el mensaje al puerto de la sala y listo

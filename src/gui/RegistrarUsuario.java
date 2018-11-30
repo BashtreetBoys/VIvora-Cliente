@@ -12,12 +12,14 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import connection.ConexionHibernate;
+import mensajeria.MensajeUsuario;
 
 public class RegistrarUsuario extends JFrame {
 	
 	Socket serverSocket;
 	ObjectInputStream bufferIn;
 	ObjectOutputStream bufferOut;
+	ConexionHibernate conexion;
 	/**
 	 * 
 	 */
@@ -36,6 +38,7 @@ public class RegistrarUsuario extends JFrame {
 		this.serverSocket = s;
 		this.bufferIn = in;
 		this.bufferOut = out;
+		conexion = new ConexionHibernate(serverSocket, bufferIn, bufferOut);
 	}
 
 	private void placeComponents(JPanel panel) {
@@ -104,7 +107,7 @@ public class RegistrarUsuario extends JFrame {
 		
 		//Fin boton loguearse
 	
-		ConexionHibernate conexion = new ConexionHibernate();
+		
 		
 		ActionListener listenerLoguearse = new ActionListener() {
 			
@@ -126,9 +129,9 @@ public class RegistrarUsuario extends JFrame {
 				String confPass = new String(confirmPasswdText.getPassword());
 				if(!(pass.equals(confPass))){
 					JOptionPane.showMessageDialog(source, "Las contraseñas no coinciden");
-				}else{
-					//Acá tengo que mandarle la petición al server.
-					
+				}
+				else{
+					MensajeUsuario mu = new MensajeUsuario(user, pass, true);
 					boolean band = conexion.registrarUsuario(user, pass);
 					if(band){
 						JOptionPane.showMessageDialog(source, "Se ha registrado su usuario!");

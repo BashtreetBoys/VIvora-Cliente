@@ -1,5 +1,7 @@
 package mensajeria;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Julian
@@ -7,7 +9,7 @@ package mensajeria;
  * guardar el puerto para establecer la conexion.
  * Tambien podriamos mandar la ip, aunque la sacamos por la ip del ServerPrincipal, que va a ser la misma que esta.
  */
-public class MjeSalasDisp {
+public class MjeSalasDisp implements Serializable{
 	public String nombreSala;
 	public int nroPuertoSala;
 	public MjeSalasDisp(String nombreSala, int nroPuertoSala) {
