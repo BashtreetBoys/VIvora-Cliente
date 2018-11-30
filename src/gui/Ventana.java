@@ -72,7 +72,7 @@ public class Ventana extends JFrame {
 		
 		setContentPane(panelPrincipal);
 		
-		cl.show(panelPrincipal, "Menu");
+		//cl.show(panelPrincipal, "Menu");
 }
 	
 	private void crearLayout() {
