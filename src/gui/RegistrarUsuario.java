@@ -128,7 +128,7 @@ public class RegistrarUsuario extends JFrame {
 					JOptionPane.showMessageDialog(source, "Las contraseñas no coinciden");
 				}else{
 					//Acá tengo que mandarle la petición al server.
-					
+					MensajeUsuario mu = new MensajeUsuario(new Usuario(user,pass), true);
 					boolean band = conexion.registrarUsuario(user, pass);
 					if(band){
 						JOptionPane.showMessageDialog(source, "Se ha registrado su usuario!");

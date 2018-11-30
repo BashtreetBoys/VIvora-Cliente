@@ -1,13 +1,14 @@
 package mensajeria;
-import daos.Usuario;
 
 public class MensajeUsuario {
 
-	private Usuario usuario;			//Info del usuario
+	String user;
+	String pass;
 	private boolean quieroRegistrarme;	//Boolean que indica si el usuario quiere registrarse.
 	
-	public MensajeUsuario(Usuario u, boolean registro) {
-		this.usuario = u;
+	public MensajeUsuario(String user, String pass, boolean registro) {
+		this.user = user;
+		this.pass = pass;
 		this.quieroRegistrarme = registro;
 	}
 }
