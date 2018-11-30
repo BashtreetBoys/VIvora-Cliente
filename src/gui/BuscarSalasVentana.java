@@ -1,9 +1,11 @@
 package gui;
 
 import java.awt.Dimension;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -27,6 +29,8 @@ public class BuscarSalasVentana extends JFrame {
 	Socket socketServerPrincipal;
 	ObjectInputStream entrada;
 	ObjectOutputStream salida;
+	
+	Socket socketSala;
 	
 	private JLabel salasLabel;
 	
@@ -57,6 +61,22 @@ public class BuscarSalasVentana extends JFrame {
 		contenido.add(panelScroll);
 		
 		panelScroll.setViewportView(listaSalasPrueba);
+	}
+	
+	private void conectarseASala(int nroPuerto) {
+		try {
+			socketSala = new Socket("127.0.0.1",nroPuerto);
+			ObjectInputStream buffarini = new ObjectInputStream(socketSala.getInputStream());
+			ObjectOutputStream bufferOut = new ObjectOutputStream(socketSala.getOutputStream());
+			//aca lanza vos la ArenaVentanaMultiplayer o algo asi, y fijate de poner en el constructor las cosas que declare arriba.
+			//es mucho muy importante.
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	
 	}
 
 	private void crearComponentes() {
