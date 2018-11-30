@@ -1,4 +1,5 @@
 package mensajeria;
+import daos.Usuario;
 
 public class MensajeUsuario {
 
