@@ -105,7 +105,7 @@ public class Login extends JFrame {
 
 		panelLogin.add(registerButton);
 
-		RegistrarUsuario regUser = new RegistrarUsuario();
+		RegistrarUsuario regUser = new RegistrarUsuario(socketServerPrincipal, salida, entrada);
 		/*Socket socketServerPrincipal = new Socket("127.0.0.1",10258);
 		ObjectOutputStream salida = new ObjectOutputStream(socketServerPrincipal.getOutputStream());
 		ObjectInputStream entrada  = new ObjectInputStream(socketServerPrincipal.getInputStream());*/

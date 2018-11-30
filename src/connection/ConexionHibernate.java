@@ -117,6 +117,7 @@ public class ConexionHibernate {
 	 * @return true si ingreso con exito, false si no
 	 */
 	public boolean registrarUsuario(String user, String pass) {
+		//Acá tengo que enviarle los mensajes al server
 		Usuario nuevo = new Usuario();
 		nuevo.setUsername(user);
 		nuevo.setPassword(pass);

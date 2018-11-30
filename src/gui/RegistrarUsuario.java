@@ -15,12 +15,15 @@ import connection.ConexionHibernate;
 
 public class RegistrarUsuario extends JFrame {
 	
+	Socket serverSocket;
+	ObjectInputStream bufferIn;
+	ObjectOutputStream bufferOut;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4609160768508516389L;
 	
-	public RegistrarUsuario() {
+	public RegistrarUsuario(Socket s, ObjectOutputStream out, ObjectInputStream in) {
 		super("Registrar");
 		setSize(225, 340);
 		setResizable(false);
@@ -30,6 +33,9 @@ public class RegistrarUsuario extends JFrame {
 		JPanel panel = new JPanel();
 		add(panel);
 		placeComponents(panel);		
+		this.serverSocket = s;
+		this.bufferIn = in;
+		this.bufferOut = out;
 	}
 
 	private void placeComponents(JPanel panel) {
@@ -121,6 +127,8 @@ public class RegistrarUsuario extends JFrame {
 				if(!(pass.equals(confPass))){
 					JOptionPane.showMessageDialog(source, "Las contraseñas no coinciden");
 				}else{
+					//Acá tengo que mandarle la petición al server.
+					
 					boolean band = conexion.registrarUsuario(user, pass);
 					if(band){
 						JOptionPane.showMessageDialog(source, "Se ha registrado su usuario!");
