@@ -43,7 +43,8 @@ public class BuscarSalasVentana extends JFrame {
 		crearComponentes();
 		crearLayout();
 		
-		crearSalasPrueba();	// Aca solo creo unas salas (String) para ver como queda
+		//crearSalasPrueba();	// Aca solo creo unas salas (String) para ver como queda
+		crearSalasPosta();
 		/**
 		 * Dejo esto aca porque despues no se bien donde ponerlo.
 		 * Al hacer doble click sobre algun elemento de la lista ya deberia poder abrir una ventana (o Jpanel o no se) nueva con la arena de multiplayer.
@@ -124,7 +125,30 @@ public class BuscarSalasVentana extends JFrame {
 		salasLabel = new JLabel("Salas disponibles:");
 		salasLabel.setMaximumSize(new Dimension(100, 30));	
 	}
+	/**
+	 * Me tome la libertad de hacer este metodo, modificalo o borralo a la mierda si esta mal.
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
+	private void crearSalasPosta() {
+		DefaultListModel modelo = new DefaultListModel();
+		//ArrayList<MjeSalasDisp> salas = this.obtenerSalasParaMostrar();
+		//pongo este para probar una cosa
+		ArrayList<MjeSalasDisp> salas = this.obtenerSalasParaMostrar2();
+		for(MjeSalasDisp sala:salas) {
+			modelo.addElement(sala);
+		}
+		listaSalasPrueba.setModel(modelo);
+	}
 	
+	private ArrayList<MjeSalasDisp> obtenerSalasParaMostrar2() {
+		ArrayList<MjeSalasDisp> nue = new ArrayList<MjeSalasDisp>();
+		for(int i =0;i<5;i++) {
+			String nombre = "Sala " + i;
+			MjeSalasDisp nueva = new MjeSalasDisp(nombre,i);
+		}
+		return nue;
+	}
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void crearSalasPrueba() {
 		DefaultListModel modelo = new DefaultListModel();

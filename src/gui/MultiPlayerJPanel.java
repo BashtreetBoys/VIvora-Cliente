@@ -27,6 +27,7 @@ public class MultiPlayerJPanel extends JPanel {
 	ObjectInputStream entrada;
 	ObjectOutputStream salida;
 	
+	
 	public MultiPlayerJPanel(Socket s, ObjectInputStream entrada, ObjectOutputStream salida) {
 		crearComponentes();
 		crearLayout();
