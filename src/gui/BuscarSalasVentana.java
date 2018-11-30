@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -75,8 +76,39 @@ public class BuscarSalasVentana extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	/**
+	 * 
+	 * @return un arrayList con un mensaje que tiene el nombre de la sala y el numero de puerto, null si no pudo recibir nada.
+	 * Aprovecha el null para fallar de manera segura.
+	 * 
+	 */
+	private ArrayList<MjeSalasDisp> obtenerSalasParaMostrar() {
+		MjeServerPrincipal paraEnviar = new MjeServerPrincipal();
+		paraEnviar.quieroSalas = true;
+		paraEnviar.quieroDesconectarme = false;
+		paraEnviar.quieroCrearSalas = false;
+		paraEnviar.quieroConectarmeASala = false;
+		ArrayList<MjeSalasDisp> recibido = null;
+
+
+			
+		try {
+			//le mando que quiero salas
+			salida.writeObject(paraEnviar);
+			//recibo la lista de las salas para mostrarlas en pantalla
+			recibido = (ArrayList<MjeSalasDisp>)entrada.readObject();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-	
+		return recibido;
+		
+
 	}
 
 	private void crearComponentes() {
