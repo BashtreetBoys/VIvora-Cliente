@@ -144,7 +144,7 @@ public class Ventana extends JFrame {
 		
 		singlePlayerPanel = new SinglePlayerJPanel();
 		
-		multiPlayerPanel = new MultiPlayerJPanel();	//Ahora mismo no tiene nada
+		multiPlayerPanel = new MultiPlayerJPanel(socketServerPrincipal, entrada,salida);	//Ahora mismo no tiene nada
 	}
 	
 	private void lanzarSinglePlayer() {

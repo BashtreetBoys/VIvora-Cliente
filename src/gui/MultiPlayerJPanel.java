@@ -20,14 +20,16 @@ public class MultiPlayerJPanel extends JPanel {
 	
 	private JButton crearSalaButton;
 	private JButton buscarSalasButton;
+	Socket socketServerPrincipal;
+	ObjectInputStream entrada;
+	ObjectOutputStream salida;
 	
-	public MultiPlayerJPanel() {
-		Socket socketServerPrincipal;
-		ObjectInputStream entrada;
-		ObjectOutputStream salida;
+	public MultiPlayerJPanel(Socket s, ObjectInputStream entrada, ObjectOutputStream salida) {
 		crearComponentes();
 		crearLayout();
-		
+		this.socketServerPrincipal = s;
+		this.entrada = entrada;
+		this.salida = salida;
 		add(Box.createRigidArea(new Dimension(0, 100)));
 		add(crearSalaButton);
 		add(Box.createRigidArea(new Dimension(0, 20)));
