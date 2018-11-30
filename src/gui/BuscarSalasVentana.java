@@ -145,6 +145,7 @@ public class BuscarSalasVentana extends JFrame {
 		for(int i =0;i<5;i++) {
 			String nombre = "Sala " + i;
 			MjeSalasDisp nueva = new MjeSalasDisp(nombre,i);
+			nue.add(nueva);
 		}
 		return nue;
 	}
