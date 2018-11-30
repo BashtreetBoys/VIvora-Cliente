@@ -89,6 +89,6 @@ public class MultiPlayerJPanel extends JPanel {
 	}
 	
 	private void lanzarBuscadorSalas() {
-		new BuscarSalasVentana().setVisible(true);
+		new BuscarSalasVentana(socketServerPrincipal, entrada, salida).setVisible(true);
 	}
 }

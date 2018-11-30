@@ -30,12 +30,20 @@ public class BuscarSalasVentana extends JFrame {
 	
 	private JLabel salasLabel;
 	
-	public BuscarSalasVentana() {
+	public BuscarSalasVentana(Socket s, ObjectInputStream in, ObjectOutputStream out) {
 		super("Buscador");
+		this.socketServerPrincipal =s;
+		this.entrada = in;
+		this.salida = out;
 		crearComponentes();
 		crearLayout();
 		
 		crearSalasPrueba();	// Aca solo creo unas salas (String) para ver como queda
+		/**
+		 * Dejo esto aca porque despues no se bien donde ponerlo.
+		 * Al hacer doble click sobre algun elemento de la lista ya deberia poder abrir una ventana (o Jpanel o no se) nueva con la arena de multiplayer.
+		 * Voy a hacerte una funcion para que conecte y eso y despues vemos bien como manejar el tema de que lanzar o como que eso lo sabes mas vos
+		 */
 	}
 
 	private void crearLayout() {
