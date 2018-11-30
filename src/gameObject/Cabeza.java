@@ -4,9 +4,9 @@ public class Cabeza {
 	
 	private int posX;
 	private int posY;
-	private float velocidad;
+	private double velocidad;
 	
-	public Cabeza(float velocidad, int xIni, int yIni) {
+	public Cabeza(double velocidad, int xIni, int yIni) {
 		this.velocidad = velocidad;
 		this.posX = xIni * Arena.TAM_GRAFICOS;
 		this.posY = yIni * Arena.TAM_GRAFICOS;
@@ -38,5 +38,15 @@ public class Cabeza {
 
 	public void setPosY(int posY) {
 		this.posY = posY;
+	}
+
+	public double getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(double velocidad) {
+		this.velocidad = velocidad;
 	}	
+	
+	
 }
