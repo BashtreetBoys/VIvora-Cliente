@@ -19,6 +19,7 @@ public class RegistrarUsuario extends JFrame {
 	Socket serverSocket;
 	ObjectInputStream bufferIn;
 	ObjectOutputStream bufferOut;
+	ConexionHibernate conexion;
 	/**
 	 * 
 	 */
@@ -37,6 +38,7 @@ public class RegistrarUsuario extends JFrame {
 		this.serverSocket = s;
 		this.bufferIn = in;
 		this.bufferOut = out;
+		conexion = new ConexionHibernate(serverSocket, bufferIn, bufferOut);
 	}
 
 	private void placeComponents(JPanel panel) {
@@ -105,7 +107,7 @@ public class RegistrarUsuario extends JFrame {
 		
 		//Fin boton loguearse
 	
-		ConexionHibernate conexion = new ConexionHibernate(serverSocket, bufferIn, bufferOut);
+		
 		
 		ActionListener listenerLoguearse = new ActionListener() {
 			

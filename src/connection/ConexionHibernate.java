@@ -122,6 +122,9 @@ public class ConexionHibernate {
 		boolean resultado = false;
 		MensajeUsuario mu = new MensajeUsuario(user, pass, true);
 		try {
+			System.out.println(mu.user);
+			System.out.println(mu.pass);
+			System.out.println(mu.quieroRegistrarme);
 			salida.writeObject(mu);
 			resultado = entrada.readBoolean();
 		} catch (IOException e) {
