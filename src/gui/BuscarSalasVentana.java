@@ -136,9 +136,9 @@ public class BuscarSalasVentana extends JFrame {
 	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
 	private void crearSalasPosta() {
 		DefaultListModel modelo = new DefaultListModel();
-		//ArrayList<MjeSalasDisp> salas = this.obtenerSalasParaMostrar();
+		ArrayList<MjeSalasDisp> salas = this.obtenerSalasParaMostrar();
 		//pongo este para probar una cosa
-		ArrayList<MjeSalasDisp> salas = this.obtenerSalasParaMostrar2();
+		//ArrayList<MjeSalasDisp> salas = this.obtenerSalasParaMostrar2();
 		for(MjeSalasDisp sala:salas) {
 			modelo.addElement(sala);
 		}
