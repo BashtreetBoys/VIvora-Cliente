@@ -15,6 +15,11 @@ import java.net.UnknownHostException;
 
 public class Ventana extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1310402216537089705L;
+	
 	private JPanel panelPrincipal;
 	private JPanel panelMenu;
 	private JPanel panelLogin;

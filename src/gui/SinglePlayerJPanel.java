@@ -9,6 +9,11 @@ import javax.swing.border.EmptyBorder;
 
 public class SinglePlayerJPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2275292748628303660L;
+	
 	JButton botonComenzar;
 	
 	public SinglePlayerJPanel() {

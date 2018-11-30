@@ -22,6 +22,11 @@ import mensajeria.*;
 
 public class BuscarSalasVentana extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5976991400098220790L;
+	
 	private JPanel contenido;
 	private JList<MjeSalasDisp> listaSalas;
 	private JList<String> listaSalasPrueba;

@@ -15,9 +15,10 @@ import connection.ConexionHibernate;
 
 public class RegistrarUsuario extends JFrame {
 	
-	public static void main(String[] args) {
-		new RegistrarUsuario().setVisible(true);;
-	}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4609160768508516389L;
 	
 	public RegistrarUsuario() {
 		super("Registrar");

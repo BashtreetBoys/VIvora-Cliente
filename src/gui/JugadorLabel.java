@@ -4,7 +4,12 @@ import javax.swing.*;
 
 public class JugadorLabel extends JLabel {
 
-    private String nombreJugador;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 403222886438937852L;
+	
+	private String nombreJugador;
     private int puntosJugador;
 
     public JugadorLabel(String nombreJugador, int puntosJugador) {

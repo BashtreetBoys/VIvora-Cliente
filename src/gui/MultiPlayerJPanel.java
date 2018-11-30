@@ -21,6 +21,11 @@ import mensajeria.MjeServerPrincipal;
 
 public class MultiPlayerJPanel extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8718835659937511720L;
+	
 	private JButton crearSalaButton;
 	private JButton buscarSalasButton;
 	Socket socketServerPrincipal;
@@ -72,10 +77,10 @@ public class MultiPlayerJPanel extends JPanel {
 	}
 	
 	private void lanzarCreadorSala() {
-		System.out.println("Falta implementar");
-		
+		new CrearSalaVentana(this).setVisible(true);
 	}
-	private void crearSala(String nombreSala) {
+	
+	public void crearSala(String nombreSala) {	// no me gusta cambiarlo de private a public pero es temporal
 		MjeServerPrincipal paraEnviar = new MjeServerPrincipal();
 		paraEnviar.quieroConectarmeASala =false;
 		paraEnviar.quieroDesconectarme = false;

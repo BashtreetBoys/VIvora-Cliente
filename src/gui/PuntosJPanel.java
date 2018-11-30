@@ -9,7 +9,12 @@ import java.util.ArrayList;
 
 public class PuntosJPanel extends JPanel {
 
-    private ArrayList<JugadorLabel> listaJugadores;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -991822345509167857L;
+	
+	private ArrayList<JugadorLabel> listaJugadores;
     private Font fuenteLabel;
     private Dimension tamanoMaxLabel;
 

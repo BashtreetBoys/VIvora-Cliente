@@ -16,6 +16,11 @@ import gameObject.*;
 
 public class ArenaJPanel extends JPanel implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6706603269589593067L;
+
 	private ArenaVentana padre;	// seguro que esto es una re negrada
 
 	private Arena arena;

@@ -14,6 +14,11 @@ import gameObject.*;
 
 public class ArenaVentana extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3035969733902856405L;
+
 	private static int colorAAsignar = 1;
 
 	private ArenaJPanel panelArena;
