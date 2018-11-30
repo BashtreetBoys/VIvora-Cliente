@@ -35,7 +35,7 @@ public class Login extends JFrame {
  */
 	public Login(CardLayout clContenedora, JPanel panelContenedor, Socket s, ObjectOutputStream out, ObjectInputStream in) throws UnknownHostException, IOException {
 		super("Login");
-		setSize(350, 275);
+		setSize(225, 275);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
