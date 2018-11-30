@@ -126,8 +126,11 @@ public class ConexionHibernate {
 			System.out.println(mu.pass);
 			System.out.println(mu.quieroRegistrarme);
 			salida.writeObject(mu);
-			resultado = entrada.readBoolean();
+			resultado = (boolean)entrada.readObject();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return resultado;
