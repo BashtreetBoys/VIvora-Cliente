@@ -20,12 +20,14 @@ public class RegistrarUsuario extends JFrame {
 	ObjectInputStream bufferIn;
 	ObjectOutputStream bufferOut;
 	ConexionHibernate conexion;
+	CardLayout cl;
+	JPanel p;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4609160768508516389L;
 	
-	public RegistrarUsuario(Socket s, ObjectOutputStream out, ObjectInputStream in) {
+	public RegistrarUsuario(Socket s, ObjectOutputStream out, ObjectInputStream in, CardLayout cl, JPanel p) {
 		super("Registrar");
 		setSize(225, 340);
 		setResizable(false);
@@ -38,6 +40,8 @@ public class RegistrarUsuario extends JFrame {
 		this.serverSocket = s;
 		this.bufferIn = in;
 		this.bufferOut = out;
+		this.cl = cl;
+		this.p = p;
 		conexion = new ConexionHibernate(serverSocket, bufferIn, bufferOut);
 	}
 
@@ -135,6 +139,8 @@ public class RegistrarUsuario extends JFrame {
 					boolean band = conexion.registrarUsuario(user, pass);
 					if(band){
 						JOptionPane.showMessageDialog(source, "Se ha registrado su usuario!");
+						RegistrarUsuario.this.dispose();
+						cl.show(RegistrarUsuario.this.p, "Menu");
 					}
 					else{
 						JOptionPane.showMessageDialog(source, "Algo salió mal en el registro de su usuario");

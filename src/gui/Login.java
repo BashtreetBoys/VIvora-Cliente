@@ -105,7 +105,7 @@ public class Login extends JFrame {
 
 		panelLogin.add(registerButton);
 
-		RegistrarUsuario regUser = new RegistrarUsuario(socketServerPrincipal, salida, entrada);
+		RegistrarUsuario regUser = new RegistrarUsuario(socketServerPrincipal, salida, entrada, clContenedora, panelContenedor);
 		/*Socket socketServerPrincipal = new Socket("127.0.0.1",10258);
 		ObjectOutputStream salida = new ObjectOutputStream(socketServerPrincipal.getOutputStream());
 		ObjectInputStream entrada  = new ObjectInputStream(socketServerPrincipal.getInputStream());*/
@@ -140,6 +140,7 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// JButton source = (JButton) e.getSource();
 				regUser.setVisible(true);
+				Login.this.dispose();
 			}
 		};
 		loginButton.addActionListener(listenerLoguearse);
