@@ -20,7 +20,7 @@ public class MjeSalasDisp implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Sala: " + this.nombreSala +" (puerto " +this.nroPuertoSala +")";
+		return this.nombreSala +":"+this.nroPuertoSala;
 	}    
 	
 
