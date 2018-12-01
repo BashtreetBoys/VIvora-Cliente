@@ -5,12 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Collections;
+//import java.util.Collections;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import org.hibernate.mapping.Collection;
+//import org.hibernate.mapping.Collection;
 
 import gameObject.*;
 
@@ -27,8 +27,8 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 	private Timer t = new Timer(60, this);
 	private Vibora vibora;
 	private Fruta fruta;
-	private Cuerpo cuerpo;
-	int keyCodeRegistrado;
+	//private Cuerpo cuerpo;
+	private int keyCodeRegistrado;
 	private ArrayList<Obstaculo> obs;
 	ArrayList<Color> listaColores = new ArrayList<Color>();
 	private boolean band = true;
@@ -40,7 +40,7 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 		this.padre = padre;
 		arena = new Arena();
 
-		cuerpo = new Cuerpo(0,0); // supongo que estos sirven para ver las colisiones
+		//cuerpo = new Cuerpo(0,0); // supongo que estos sirven para ver las colisiones
 		vibora = new Vibora(0, 0);	// solo me sirven para ver su clase
 		arena.setLv(1);
 		arena.cambiarNivel();

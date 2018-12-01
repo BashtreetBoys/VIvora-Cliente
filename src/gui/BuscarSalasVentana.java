@@ -18,6 +18,8 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
+import gameObject.Jugador;
+import gameObject.Vibora;
 import mensajeria.*;
 
 public class BuscarSalasVentana extends JFrame {
@@ -39,12 +41,15 @@ public class BuscarSalasVentana extends JFrame {
 	Socket socketSala;
 	
 	private JLabel salasLabel;
+	private String nombreVibora;
 	
-	public BuscarSalasVentana(Socket s, ObjectInputStream in, ObjectOutputStream out) {
+	public BuscarSalasVentana(Socket s, ObjectInputStream in, ObjectOutputStream out, String nombreVibora) {
 		super("Buscador");
 		this.socketServerPrincipal =s;
 		this.entrada = in;
 		this.salida = out;
+		this.nombreVibora = nombreVibora;
+		
 		crearComponentes();
 		crearLayout();
 		
@@ -76,7 +81,10 @@ public class BuscarSalasVentana extends JFrame {
 			ObjectInputStream buffarini = new ObjectInputStream(socketSala.getInputStream());
 			ObjectOutputStream bufferOut = new ObjectOutputStream(socketSala.getOutputStream());
 			//aca lanza vos la ArenaVentanaMultiplayer o algo asi, y fijate de poner en el constructor las cosas que declare arriba.
-			//es mucho muy importante.
+			//es mucho muy importante
+			new ArenaMultiPlayerVentana(socketSala, buffarini, bufferOut,
+					new Jugador(nombreVibora, "uesaa", new Vibora(1, 1))).setVisible(true);;
+			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -103,7 +111,7 @@ public class BuscarSalasVentana extends JFrame {
 			//le mando que quiero salas
 			salida.writeObject(paraEnviar);
 			//recibo la lista de las salas para mostrarlas en pantalla
-			recibido = (ArrayList<MjeSalasDisp>)entrada.readObject();
+			recibido = (ArrayList<MjeSalasDisp>) entrada.readObject();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

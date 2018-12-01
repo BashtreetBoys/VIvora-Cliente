@@ -33,7 +33,6 @@ public class ArenaVentana extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(200,30,1100,700);
 		setResizable(false);
-		setFocusable(true);
 		
 		crearComponentes();
 		crearLayout();
