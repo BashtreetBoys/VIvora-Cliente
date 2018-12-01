@@ -1,5 +1,7 @@
 package mensajeria;
 
+import java.io.Serializable;
+
 import gameObject.Jugador;
 import gameObject.Vibora;
 
@@ -15,8 +17,12 @@ import gameObject.Vibora;
  * @author JulianP - me parece que es mejor mandar al jugador solo
  * 
  */
-public class MjeViboraNueva {
+public class MjeViboraNueva implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8981957354377602100L;
 	public Vibora viboraJugador;
 	public String nombreJugador;
 	public Jugador player;

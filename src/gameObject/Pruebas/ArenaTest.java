@@ -95,7 +95,7 @@ public class ArenaTest {
 		cuerpito.add(new Cuerpo(cabecita.getPosX(),cabecita.getPosY()-1));
 		cuerpito.add(new Cuerpo(cabecita.getPosX(),cabecita.getPosY()-2));
 		
-		Fruta frutita = new Fruta("normal",0,0,2);
+		Fruta frutita = new Fruta("normal", 0,0,2);
 	   arenita.agregarFruta(frutita);
 		
 		//Testeo la colision de una vibora con una fruta

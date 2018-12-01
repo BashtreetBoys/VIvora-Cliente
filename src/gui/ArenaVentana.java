@@ -33,7 +33,6 @@ public class ArenaVentana extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(200,30,1100,700);
 		setResizable(false);
-		setFocusable(true);
 		
 		crearComponentes();
 		crearLayout();
@@ -91,6 +90,8 @@ public class ArenaVentana extends JFrame {
 	}
 
 	public void agregarJugador(Jugador nuevoJugador) {
+		resetearColoresAAsignar();
+		
 		listaJugadores.add(nuevoJugador);
 		panelPuntos.agregarJugador(nuevoJugador.getNombre(), listaColores.get(colorAAsignar));
 		panelArena.agregarVibora(nuevoJugador.getVivorita(), listaColores.get(colorAAsignar), listaColores.get(colorAAsignar - 1));
@@ -98,6 +99,8 @@ public class ArenaVentana extends JFrame {
 	}
 	
 	public void agregarIA(Jugador nuevoIA){
+		resetearColoresAAsignar();
+		
 		listaJugadores.add(nuevoIA);
 		panelPuntos.agregarJugador(nuevoIA.getNombre(), listaColores.get(colorAAsignar));
 		nuevoIA.getVivorita().setIA(true);
@@ -106,24 +109,22 @@ public class ArenaVentana extends JFrame {
 		ArenaVentana.colorAAsignar += 2;	
 	}
 
-	private void crearListaColores() {
-		listaColores.add(new Color(204, 102, 255));
-		listaColores.add(new Color(204, 51, 255));
-		listaColores.add(new Color(255, 102, 102));
-		listaColores.add(new Color(255, 77, 77));
-		listaColores.add(new Color(77, 255, 136));
-		listaColores.add(new Color(0, 179, 60));
-		listaColores.add(new Color(51, 133, 255));
-		listaColores.add(new Color(26, 117, 255));
-		listaColores.add(new Color(230, 46, 0));
-		listaColores.add(new Color(204, 41, 0));
-		listaColores.add(new Color(255, 184, 77));
-		listaColores.add(new Color(255, 153, 0));
-		listaColores.add(new Color(0, 255, 255));
-		listaColores.add(new Color(0, 179, 179));
-//		Collections.shuffle(listaColores);
+	private void resetearColoresAAsignar() {
+		if(ArenaVentana.colorAAsignar >= listaColores.size())
+			ArenaVentana.colorAAsignar = 1;
 	}
-
+	
+	private void crearListaColores() {
+		listaColores.add(new Color(255, 102, 102)); ///rosa oscuro
+		listaColores.add(new Color(255, 77, 77)); ///rosa claro
+		listaColores.add(new Color(51, 133, 255)); /// celeste
+		listaColores.add(new Color(26, 117, 255)); /// celeste oscuro
+		listaColores.add(new Color(255, 184, 77)); ///naranja apagado
+		listaColores.add(new Color(255, 153, 0)); ///naranja oscuro
+		listaColores.add(new Color(77, 255, 136)); /// verde agua
+		listaColores.add(new Color(0, 179, 60)); /// verde agua oscuro
+	}
+	
 	public void actualizarPuntosJugador(Vibora vibora, int puntajeNuevo) {
 		for (Jugador j : listaJugadores) {
 			if(j.getVivorita() == vibora) {

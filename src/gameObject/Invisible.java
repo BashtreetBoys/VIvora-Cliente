@@ -1,10 +1,10 @@
 package gameObject;
 
-public class Flash implements Estado {
+public class Invisible implements Estado {
 
 	@Override
 	public void cambiarEstado(Vibora vibora) {
-		vibora.setEstado(3);
+		vibora.setEstado(4);
 	}
 
 }

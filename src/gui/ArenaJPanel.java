@@ -5,12 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Collections;
+//import java.util.Collections;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import org.hibernate.mapping.Collection;
+//import org.hibernate.mapping.Collection;
 
 import gameObject.*;
 
@@ -27,8 +27,8 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 	private Timer t = new Timer(60, this);
 	private Vibora vibora;
 	private Fruta fruta;
-	private Cuerpo cuerpo;
-	int keyCodeRegistrado;
+	//private Cuerpo cuerpo;
+	private int keyCodeRegistrado;
 	private ArrayList<Obstaculo> obs;
 	ArrayList<Color> listaColores = new ArrayList<Color>();
 	private boolean band = true;
@@ -40,7 +40,7 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 		this.padre = padre;
 		arena = new Arena();
 
-		cuerpo = new Cuerpo(0,0); // supongo que estos sirven para ver las colisiones
+		//cuerpo = new Cuerpo(0,0); // supongo que estos sirven para ver las colisiones
 		vibora = new Vibora(0, 0);	// solo me sirven para ver su clase
 		arena.setLv(1);
 		arena.cambiarNivel();
@@ -91,8 +91,28 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 		g.fillRect(fruta.getPosX(), fruta.getPosY(), Arena.TAM_GRAFICOS, Arena.TAM_GRAFICOS);
 	}
 
-	private void pintarVibora(Graphics g,Vibora v) {
-		// g.setColor(new Color(255, 83, 76)); si no jode a los ojos dejar este color
+	private void pintarVibora(Graphics g, Vibora v) {
+		if(v.getEstado()==0) {
+			v.setColorCabeza(v.getColorOrigCab());
+			v.setColorCuerpo(v.getColorOrigCuerpo());
+		}
+		else if(v.getEstado()==3) {
+			v.setColorCabeza(new Color(203,5,5));
+			v.setColorCuerpo(new Color(255,0,0));
+		}
+		else if(v.getEstado()==1) {
+			v.setColorCabeza(new Color(225,232,0));
+			v.setColorCuerpo(new Color(247,255,0));
+		}
+		else if(v.getEstado()==2) {
+			v.setColorCabeza(new Color(183,2,192));
+			v.setColorCuerpo(new Color(243,0,255));
+		}
+		else if(v.getEstado()==4) {
+			v.setColorCabeza(new Color(226,226,226));
+			v.setColorCuerpo(new Color(255,255,255));
+		}
+	
 		g.setColor(v.getColorCabeza());
 		g.fillRect(v.getCabeza().getPosX(), v.getCabeza().getPosY(), Arena.TAM_GRAFICOS, Arena.TAM_GRAFICOS);
 
@@ -126,6 +146,11 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 				v[i].moverVibora(keyCodeRegistrado);
 			// t.stop();  // lo dejo porque capaz con el synchronized no se soluciona el problema de los threads
 			arena.verColision(v[i].getCabeza().getPosX(), v[i].getCabeza().getPosY(), v[i]);
+			
+			if(v[i].getEstado() == 3) {
+				v[i].moverVibora(keyCodeRegistrado);
+				arena.verColision(v[i].getCabeza().getPosX(), v[i].getCabeza().getPosY(), v[i]);
+			}
 			padre.actualizarPuntosJugador(v[i], v[i].getPuntosPartidaActual());
 			// t.start(); // lo dejo porque capaz con el synchronized no se soluciona el problema de los threads
 		
@@ -150,21 +175,26 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 			return KeyEvent.VK_LEFT;
 	}
 
-	private int aKeyCodeOpuesto(int direccion) {
-
-		if (direccion == 3)
-			return KeyEvent.VK_UP;
-		else if (direccion == 4)
-			return KeyEvent.VK_RIGHT;
-		else if (direccion == 1)
-			return KeyEvent.VK_DOWN;
-		else
-			return KeyEvent.VK_LEFT;
-	}
+//	private int aKeyCodeOpuesto(int direccion) {
+//
+//		if (direccion == 3)
+//			return KeyEvent.VK_UP;
+//		else if (direccion == 4)
+//			return KeyEvent.VK_RIGHT;
+//		else if (direccion == 1)
+//			return KeyEvent.VK_DOWN;
+//		else
+//			return KeyEvent.VK_LEFT;
+//	}
 
 	public void agregarVibora(Vibora vivorita, Color colorCabeza, Color colorCuerpo) {
 		vivorita.setColorCabeza(colorCabeza);
 		vivorita.setColorCuerpo(colorCuerpo);
+		
+		vivorita.setColorOrigCab(colorCabeza);
+		vivorita.setColorOrigCuerpo(colorCuerpo);
+		
 		arena.agregarVibora(vivorita);
+		
 	}
 }

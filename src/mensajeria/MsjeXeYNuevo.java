@@ -1,5 +1,7 @@
 package mensajeria;
 
+import java.io.Serializable;
+
 import gameObject.Vibora;
 
 /**
@@ -10,10 +12,19 @@ import gameObject.Vibora;
  * @author Julian
  *
  */
-public class MsjeXeYNuevo {
+public class MsjeXeYNuevo implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5290282739808056096L;
 	public Vibora miVibora;
 	public int posXNueva;
 	public int posYNueva;
 	
+	public MsjeXeYNuevo(Vibora v) {
+		this.miVibora = v;
+		this.posXNueva = v.getCabeza().getPosX();
+		this.posYNueva = v.getCabeza().getPosY();
+	}
 }
