@@ -15,6 +15,11 @@ import gameObject.Vibora;
 @SuppressWarnings("serial")
 public class MsjeXeYNuevo implements Serializable{
 
+	public MsjeXeYNuevo(Vibora v) {
+		this.miVibora = v;
+		this.posXNueva = v.getCabeza().getPosX();
+		this.posYNueva = v.getCabeza().getPosY();
+	}
 	public Vibora miVibora;
 	public int posXNueva;
 	public int posYNueva;

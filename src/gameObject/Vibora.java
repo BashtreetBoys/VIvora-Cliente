@@ -14,10 +14,12 @@ public class Vibora {
 	private boolean viva;
 	private Color colorCabeza,colorCuerpo;
 	private int puntosPartidaActual;
+	private int estado;
+	private Color colorOrigCab;
+	private Color colorOrigCuerpo;
 	
 	private boolean isIA;
 	private int tipoIA;
-	
 
 	public Vibora(int xIni, int yIni) {
 		this.velocidad = 1;
@@ -234,5 +236,37 @@ public class Vibora {
 
 	public void setDireccion(int dir) {
 		this.direccion = dir;	
+	}
+
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
+
+	public Color getColorOrigCab() {
+		return colorOrigCab;
+	}
+
+	public void setColorOrigCab(Color colorOrigCab) {
+		this.colorOrigCab = colorOrigCab;
+	}
+
+	public Color getColorOrigCuerpo() {
+		return colorOrigCuerpo;
+	}
+
+	public void setColorOrigCuerpo(Color colorOrigCuerpo) {
+		this.colorOrigCuerpo = colorOrigCuerpo;
+	}
+
+	public int getRatioCrecimiento() {
+		return ratioCrecimiento;
+	}
+
+	public void setPuntosPartidaActual(int puntosPartidaActual) {
+		this.puntosPartidaActual = puntosPartidaActual;
 	}
 }
