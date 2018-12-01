@@ -1,7 +1,5 @@
 package connection;
 
-import org.junit.Test;
-
 /**
  * 
  * Asi es como se van a usar las clases por el momento, con llamar a estos metodos ya deberia estar para hacer un login, la parte grafica se las dejo

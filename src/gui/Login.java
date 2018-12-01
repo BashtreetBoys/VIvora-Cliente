@@ -3,19 +3,16 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 
 import connection.ConexionHibernate;
 
+@SuppressWarnings("serial")
 public class Login extends JFrame {
 /*
 	public static void main(String[] args) throws UnknownHostException, IOException {

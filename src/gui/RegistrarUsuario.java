@@ -3,16 +3,11 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import connection.ConexionHibernate;
-import mensajeria.MensajeUsuario;
 
 public class RegistrarUsuario extends JFrame {
 	
@@ -117,9 +112,7 @@ public class RegistrarUsuario extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JButton source = (JButton) e.getSource();
 				setVisible(false);
-			
 			}
 		};
 		
@@ -135,7 +128,6 @@ public class RegistrarUsuario extends JFrame {
 					JOptionPane.showMessageDialog(source, "Las contraseñas no coinciden");
 				}
 				else{
-					MensajeUsuario mu = new MensajeUsuario(user, pass, true);
 					boolean band = conexion.registrarUsuario(user, pass);
 					if(band){
 						JOptionPane.showMessageDialog(source, "Se ha registrado su usuario!");

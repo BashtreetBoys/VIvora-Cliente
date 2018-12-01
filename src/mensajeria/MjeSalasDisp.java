@@ -9,6 +9,7 @@ import java.io.Serializable;
  * guardar el puerto para establecer la conexion.
  * Tambien podriamos mandar la ip, aunque la sacamos por la ip del ServerPrincipal, que va a ser la misma que esta.
  */
+@SuppressWarnings("serial")
 public class MjeSalasDisp implements Serializable{
 	public String nombreSala;
 	public int nroPuertoSala;

@@ -1,7 +1,7 @@
 package daos;
-
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Usuario implements Serializable{
 
 	private String username;

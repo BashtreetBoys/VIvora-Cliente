@@ -83,8 +83,11 @@ public class ArenaTest {
 	
 	public void testVerColisionFruta() {
 		Arena arenita =  new Arena();
+		@SuppressWarnings("unused")
 		ArrayList<Obstaculo> obs = new ArrayList<Obstaculo>();
+		@SuppressWarnings("unused")
 		ArrayList<Vibora> vibs = new ArrayList<Vibora>();
+		@SuppressWarnings("unused")
 		Vibora vib = new Vibora(3,2);
 
 		Cabeza cabecita = new Cabeza(20, 10, 10);

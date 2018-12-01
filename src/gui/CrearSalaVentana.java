@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -16,8 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import mensajeria.MjeServerPrincipal;
 
 public class CrearSalaVentana extends JFrame {
 
@@ -37,8 +34,11 @@ public class CrearSalaVentana extends JFrame {
 	private String nombreSala = null;
 	private MultiPlayerJPanel padre;
 	
+	@SuppressWarnings("unused")
 	private Socket socketAlServer;
+	@SuppressWarnings("unused")
 	private ObjectInputStream entrada;
+	@SuppressWarnings("unused")
 	private ObjectOutputStream salida;
 	
 	public CrearSalaVentana(MultiPlayerJPanel padre, Socket socketServerPrincipal,

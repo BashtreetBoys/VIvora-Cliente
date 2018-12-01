@@ -12,6 +12,7 @@ import gameObject.Vibora;
  * @author Julian
  *
  */
+@SuppressWarnings("serial")
 public class MsjeXeYNuevo implements Serializable{
 
 	public Vibora miVibora;

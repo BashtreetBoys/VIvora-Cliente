@@ -5,12 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Collections;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
-import org.hibernate.mapping.Collection;
 
 import gameObject.*;
 
@@ -27,6 +23,7 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 	private Timer t = new Timer(60, this);
 	private Vibora vibora;
 	private Fruta fruta;
+	@SuppressWarnings("unused")
 	private Cuerpo cuerpo;
 	int keyCodeRegistrado;
 	private ArrayList<Obstaculo> obs;
@@ -150,6 +147,7 @@ public class ArenaJPanel extends JPanel implements ActionListener {
 			return KeyEvent.VK_LEFT;
 	}
 
+	@SuppressWarnings("unused")
 	private int aKeyCodeOpuesto(int direccion) {
 
 		if (direccion == 3)

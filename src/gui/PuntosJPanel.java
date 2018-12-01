@@ -1,7 +1,5 @@
 package gui;
 
-import gameObject.Jugador;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;

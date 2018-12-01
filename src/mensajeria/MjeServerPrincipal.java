@@ -12,7 +12,8 @@ import java.io.Serializable;
  * Si yo quiero desconectarme de la sala pongo el quieroDesconectarme en true y eso va a cerrar todo, re lindo no? @author JulianP - ermozo jaj
  * El quieroConectarmeASala lo deje por las dudas pero no lo vamos a usar
  */
-        
+
+@SuppressWarnings("serial")
 public class MjeServerPrincipal implements Serializable{
 	public boolean quieroSalas;
 	public boolean quieroCrearSalas;

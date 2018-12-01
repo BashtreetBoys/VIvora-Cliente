@@ -2,6 +2,7 @@ package mensajeria;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class MensajeUsuario implements Serializable {
 
 	public String user;

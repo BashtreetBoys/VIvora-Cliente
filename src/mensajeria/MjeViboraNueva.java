@@ -17,6 +17,8 @@ import gameObject.Vibora;
  * @author JulianP - me parece que es mejor mandar al jugador solo
  * 
  */
+
+@SuppressWarnings("serial")
 public class MjeViboraNueva implements Serializable{
 
 	public Vibora viboraJugador;

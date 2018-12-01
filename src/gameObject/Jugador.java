@@ -1,6 +1,4 @@
 package gameObject;
-import java.awt.Color;
-import java.lang.invoke.SwitchPoint;
 
 /**
  * 

@@ -7,7 +7,6 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -28,7 +27,7 @@ public class BuscarSalasVentana extends JFrame {
 	private static final long serialVersionUID = -5976991400098220790L;
 	
 	private JPanel contenido;
-	private JList<MjeSalasDisp> listaSalas;	// No se si esto es lo que va pero bue
+	//private JList<MjeSalasDisp> listaSalas;	// No se si esto es lo que va pero bue
 	private JList<String> listaSalasPrueba;
 	private JScrollPane panelScroll;
 	
@@ -70,6 +69,7 @@ public class BuscarSalasVentana extends JFrame {
 		panelScroll.setViewportView(listaSalasPrueba);
 	}
 	
+	@SuppressWarnings("unused")
 	private void conectarseASala(int nroPuerto) {
 		try {
 			socketSala = new Socket("127.0.0.1",nroPuerto);
@@ -89,6 +89,7 @@ public class BuscarSalasVentana extends JFrame {
 	 * Aprovecha el null para fallar de manera segura.
 	 * 
 	 */
+	@SuppressWarnings("unchecked")
 	private ArrayList<MjeSalasDisp> obtenerSalasParaMostrar() {
 		MjeServerPrincipal paraEnviar = new MjeServerPrincipal();
 		paraEnviar.quieroSalas = true;
@@ -145,6 +146,7 @@ public class BuscarSalasVentana extends JFrame {
 		listaSalasPrueba.setModel(modelo);
 	}
 	
+	@SuppressWarnings("unused")
 	private ArrayList<MjeSalasDisp> obtenerSalasParaMostrar2() {
 		ArrayList<MjeSalasDisp> nue = new ArrayList<MjeSalasDisp>();
 		for(int i =0;i<5;i++) {
@@ -155,7 +157,7 @@ public class BuscarSalasVentana extends JFrame {
 		return nue;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes", "unchecked", "unused"})
 	private void crearSalasPrueba() {
 		DefaultListModel modelo = new DefaultListModel();
 		modelo.addElement("Sala 1");
